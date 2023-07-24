@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show-Page</title>
+</head>
+<body>
+    <table style="border: 1px solid black; border-collapse:collapse;">
+        <tr>
+            <th style="border: 1px solid black;">Id</th>
+            <th style="border: 1px solid black;">Title</th>
+            <th style="border: 1px solid black;">Body</th>
+            <th style="border: 1px solid black;">Status</th>
+            <th style="border: 1px solid black;">Deadline</th>
+            <th style="border: 1px solid black;">Complete</th>
+            <th style="border: 1px solid black;">Edit</th>
+            <th style="border: 1px solid black;">Delete</th>
+        </tr>
+        {% for task in task_list %}
+            <tr>
+                <th style="border: 1px solid black;">{{ task.id }}</th>
+                <th style="border: 1px solid black;">{{ task.title }}</th>
+                <th style="border: 1px solid black;">{{ task.body }}</th>
+                <th style="border: 1px solid black;">{{ task.status }}</th>
+                <th style="border: 1px solid black;">{{ task.deadline }}</th>
+                <th style="border: 1px solid black;">
+                    <a href="{% url 'app:complete-button' task.id %}" class="complete-btn">Complete</a>
+                </th>
+                <th style="border: 1px solid black;">
+                    <a href="{% url 'app:edit-button' task.id %}" class="edit-btn">Edit</a>
+                </th>
+                <th style="border: 1px solid black;">
+                    <a href="{% url 'app:delete-button' task.id %}" class="delete-btn">Delete</a>
+                </th>
+            </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+
+    <a href="add/">Add New Task</a>
+</body>
+</html>
